@@ -34,7 +34,7 @@ fit.gg <- gglasso(x = x.mod, y = c(y, rep(0, nrow(C))), group = ind.gg,
                   loss = "wls", lambda = fit.cvgg$lambda.1se, 
                   weight = diag(weights, nrow(x.mod)), intercept = FALSE)
 
-return(fit.gg)
+return(fit.gg$beta)
 
 }
 
