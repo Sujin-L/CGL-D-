@@ -1,5 +1,25 @@
 library(gglasso)
 
+## for constraint matrix 
+con.matrix <- function(r, M){
+  
+  C  <- C.one <- NULL # constraint matrix 
+  
+  for(j in 1:M){
+    C <- cbind(C, diag(r)/sqrt(M))
+    C.one <- cbind(C.one, diag(r))
+  }
+  
+  C <- t(C); C.one <- t(C.one)
+  
+  P_C <- C %*% t(C)
+  
+  constr.list <- list(C = C, C.one = C.one, P_C = P_C) 
+  return(constr.list)
+  
+}
+
+
 
 cv.gglasso.mod <- function(x, y, r, group, pred.loss = "L1", 
                            nfolds = 5, foldid, delta=1, loss = loss, weights = weights) {
