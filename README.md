@@ -1,1 +1,1 @@
-# CGL-D-
+# Debiased Compositional Group Lasso
